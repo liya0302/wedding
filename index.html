@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liya & Ramzi | 26.07.2025</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600&family=Parisienne&display=swap" rel="stylesheet">
+  <style>
+    /* Основные стили */
+    body {
+      font-family: 'Cormorant Garamond', serif;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      overflow-x: hidden;
+      background-color: #fffaf5;
+      position: relative;
+      font-weight: 400;
+      line-height: 1.6;
+    }
+    
+    /* Фоновое изображение */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://cokgold.ru/upload/iblock/429/3tlo3hhfhd9i3m1buibdpzea7hrr1z8n/200-000-306---200-000-327.jpg') no-repeat center center;
+      background-size: cover;
+      opacity: 0;
+      z-index: -1;
+      transition: opacity 1.5s ease;
+    }
+
+    /* Затемнение фона */
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(20, 20, 20, 0.2), rgba(255, 245, 235, 0.3));
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 1.5s ease;
+    }
+
+    body.loaded::before {
+      opacity: 0.4;
+    }
+
+    body.loaded::after {
+      opacity: 1;
+    }
+    
+    /* Контейнер контента */
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* Заголовок в каллиграфичном стиле - УВЕЛИЧЕН */
+    h1 {
+      font-family: 'Parisienne', cursive;
+      font-size: 5.5em; /* Увеличено с 4.2em */
+      margin: 20px 0 10px;
+      color: #1a1a1a;
+      font-weight: 400;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+      position: relative;
+      z-index: 2;
+      line-height: 1.1;
+    }
+    
+    /* Дата */
+    .date {
+      font-size: 1.8em;
+      color: #d4af37;
+      margin-bottom: 40px;
+      font-weight: 400; /* Сделано менее тонким */
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+      font-family: 'Cormorant Garamond', serif;
+    }
+    
+    /* Блоки с анимацией */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s ease;
+    }
+    
+    .visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Программа */
+    .program {
+      max-width: 600px;
+      margin: 40px auto;
+      text-align: left;
+      border-left: 2px solid #d4af37;
+      padding-left: 25px;
+      font-family: 'Cormorant Garamond', serif;
+    }
+    
+    .program p {
+      font-size: 1.1em;
+      margin: 15px 0;
+      position: relative;
+      padding-left: 20px;
+      font-weight: 400;
+    }
+    
+    .program p::before {
+      content: "•";
+      color: #d4af37;
+      font-size: 1.5em;
+      position: absolute;
+      left: -5px;
+      top: -5px;
+    }
+    
+    /* Карты */
+    .map-container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin: 50px 0;
+    }
+    
+    .map {
+      width: 48%;
+      height: 250px;
+      background: #f9f9f9;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+      position: relative;
+    }
+    
+    .map-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.8);
+      font-family: 'Cormorant Garamond', serif;
+    }
+    
+    /* Таймер */
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 40px 0;
+    }
+    
+    .countdown-item {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      min-width: 80px;
+      font-family: 'Cormorant Garamond', serif;
+    }
+    
+    .countdown-number {
+      font-size: 2em;
+      color: #d4af37;
+      font-weight: 600;
+    }
+    
+    /* Защита паролем */
+    .password-popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    
+    .password-box {
+      background: white;
+      padding: 40px;
+      border-radius: 15px;
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+      font-family: 'Cormorant Garamond', serif;
+    }
+    
+    .password-box h2 {
+      color: #d4af37;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+    
+    .password-box input {
+      padding: 12px;
+      width: 80%;
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-family: 'Cormorant Garamond', serif;
+    }
+    
+    .hidden {
+      display: none;
+    }
+    
+    /* Дополнительные стили для утончённого текста */
+    h2, h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      color: #333;
+    }
+    
+    em {
+      font-style: italic;
+      font-weight: 400;
+    }
+    
+    .invitation-text {
+      margin: 30px 0;
+      font-size: 1.2em;
+    }
+    
+    .heart {
+      color: red;
+      font-size: 1.3em;
+    }
+    
+    .ceremony-note {
+      font-size: 0.9em;
+      color: #666;
+      margin-top: -10px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Попап с паролем -->
+  <div id="passwordPopup" class="password-popup">
+    <div class="password-box">
+      <h2>Добро пожаловать!</h2>
+      <p>Введите пароль для просмотра приглашения:</p>
+      <input type="password" id="passwordInput" placeholder="Пароль">
+      <button class="btn-gold" onclick="checkPassword()">Открыть</button>
+    </div>
+  </div>
+
+  <!-- Основной контент -->
+  <div id="content" class="container hidden">
+    <h1 class="fade-in">Liya & Ramzi</h1>
+    <p class="date fade-in">26 июля 2025 года</p>
+    
+    <!-- Таймер -->
+    <div class="countdown fade-in">
+      <div class="countdown-item">
+        <div class="countdown-number" id="days">00</div>
+        <div>дней</div>
+      </div>
+      <div class="countdown-item">
+        <div class="countdown-number" id="hours">00</div>
+        <div>часов</div>
+      </div>
+      <div class="countdown-item">
+        <div class="countdown-number" id="minutes">00</div>
+        <div>минут</div>
+      </div>
+    </div>
+    
+    <!-- Пригласительный текст -->
+    <div class="invitation-text fade-in">
+      Мы хотим, чтобы в самый важный для нас день вы были с нами! <span class="heart">❤</span>
+    </div>
+    
+    <!-- Программа -->
+    <div class="program fade-in">
+      <h2>Программа</h2>
+      <p>12:00 – Торжественная церемония в ЗАГСе</p>
+      <p class="ceremony-note">приезжайте к 11:30</p>
+      <p>13:00 – Начало программы в Urban Hall</p>
+      <p>14:00 – Приезд молодожёнов</p>
+      <p>14:15 – Банкет</p>
+      <p>16:00 – Танцы</p>
+      <p>20:00 – Окончание</p>
+    </div>
+    
+    <!-- Дресс-код -->
+    <div class="fade-in">
+      <p><em>Дресс-код: вечерние наряды, базовые цвета в одежде</em></p>
+    </div>
+    
+    <!-- Карты -->
+    <div class="map-container">
+      <div class="map fade-in">
+        <div class="map-overlay">
+          <div>
+            <h3>ЗАГС Партизанского района</h3>
+            <p>ул. О. Кошевого, 27а</p>
+          </div>
+        </div>
+      </div>
+      <div class="map fade-in">
+        <div class="map-overlay">
+          <div>
+            <h3>Urban Hall</h3>
+            <p>Партизанский проспект, 6</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Проверка пароля
+    function checkPassword() {
+      const password = document.getElementById('passwordInput').value;
+      if (password === "L&R2025") {
+        document.getElementById('passwordPopup').style.display = 'none';
+        document.getElementById('content').classList.remove('hidden');
+        document.body.classList.add('loaded');
+        startAnimations();
+        startCountdown();
+      } else {
+        alert("Неверный пароль! Попробуйте снова.");
+      }
+    }
+    
+    // Анимации при скролле
+    function startAnimations() {
+      const elements = document.querySelectorAll('.fade-in');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      elements.forEach(el => observer.observe(el));
+    }
+    
+    // Таймер обратного отсчета (исправлено время на 12:00)
+    function startCountdown() {
+      const weddingDate = new Date('July 26, 2025 12:00:00').getTime();
+      
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = weddingDate - now;
+        
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        
+        document.getElementById('days').innerText = days.toString().padStart(2, '0');
+        document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
+        document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
+      }
+      
+      updateCountdown();
+      setInterval(updateCountdown, 60000);
+    }
+    
+    // Автофокус на поле пароля
+    document.getElementById('passwordInput').focus();
+  </script>
+</body>
+</html>
