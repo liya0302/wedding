@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Liya & Ramzi | 26.07.2025</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600&family=Parisienne&display=swap" rel="stylesheet">
+  <title>Ramzi & Liya | 26.07.2025</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     /* Основные стили */
     body {
@@ -66,17 +66,18 @@
       z-index: 1;
     }
     
-    /* Заголовок в каллиграфичном стиле - УВЕЛИЧЕН */
+    /* Заголовок в каллиграфичном стиле - Great Vibes */
     h1 {
-      font-family: 'Parisienne', cursive;
-      font-size: 5.5em; /* Увеличено с 4.2em */
+      font-family: 'Great Vibes', cursive; /* Новый шрифт */
+      font-size: 5.5em;
       margin: 20px 0 10px;
       color: #1a1a1a;
       font-weight: 400;
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
       position: relative;
       z-index: 2;
       line-height: 1.1;
+      letter-spacing: 2px; /* Добавлено для элегантности */
     }
     
     /* Дата */
@@ -84,7 +85,7 @@
       font-size: 1.8em;
       color: #d4af37;
       margin-bottom: 40px;
-      font-weight: 400; /* Сделано менее тонким */
+      font-weight: 400;
       text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
       font-family: 'Cormorant Garamond', serif;
     }
@@ -116,7 +117,7 @@
       margin: 15px 0;
       position: relative;
       padding-left: 20px;
-      font-weight: 400;
+      font-weight: 500;
     }
     
     .program p::before {
@@ -145,6 +146,12 @@
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
       margin-bottom: 20px;
       position: relative;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .map:hover {
+      transform: translateY(-5px);
     }
     
     .map-overlay {
@@ -158,6 +165,11 @@
       align-items: center;
       background: rgba(255, 255, 255, 0.8);
       font-family: 'Cormorant Garamond', serif;
+    }
+    
+    .map-overlay p {
+      font-size: 1.2em;
+      margin-top: 10px;
     }
     
     /* Таймер */
@@ -226,7 +238,7 @@
       display: none;
     }
     
-    /* Дополнительные стили для утончённого текста */
+    /* Дополнительные стили */
     h2, h3 {
       font-family: 'Cormorant Garamond', serif;
       font-weight: 600;
@@ -269,7 +281,7 @@
 
   <!-- Основной контент -->
   <div id="content" class="container hidden">
-    <h1 class="fade-in">Liya & Ramzi</h1>
+    <h1 class="fade-in">Ramzi & Liya</h1>
     <p class="date fade-in">26 июля 2025 года</p>
     
     <!-- Таймер -->
@@ -290,19 +302,17 @@
     
     <!-- Пригласительный текст -->
     <div class="invitation-text fade-in">
-      Мы хотим, чтобы в самый важный для нас день вы были с нами! <span class="heart">❤</span>
+      Приглашаем Вас на торжественное мероприятие в честь нашей свадьбы! Мы хотим, чтобы в самый важный для нас день вы были с нами <span class="heart">❤</span>
     </div>
     
     <!-- Программа -->
     <div class="program fade-in">
       <h2>Программа</h2>
-      <p>12:00 – Торжественная церемония в ЗАГСе</p>
-      <p class="ceremony-note">приезжайте к 11:30</p>
-      <p>13:00 – Начало программы в Urban Hall</p>
+      <p>11:30 – Торжественная церемония в ЗАГС</p>
+      <p>13:00 – Начало мероприятия в Кафе "Ребус"</p>
       <p>14:00 – Приезд молодожёнов</p>
       <p>14:15 – Банкет</p>
-      <p>16:00 – Танцы</p>
-      <p>20:00 – Окончание</p>
+      <p>21:00 – Окончание</p>
     </div>
     
     <!-- Дресс-код -->
@@ -312,7 +322,7 @@
     
     <!-- Карты -->
     <div class="map-container">
-      <div class="map fade-in">
+      <div class="map fade-in" onclick="openYandexMaps('ул. О. Кошевого, 27а')">
         <div class="map-overlay">
           <div>
             <h3>ЗАГС Партизанского района</h3>
@@ -320,11 +330,11 @@
           </div>
         </div>
       </div>
-      <div class="map fade-in">
+      <div class="map fade-in" onclick="openYandexMaps('ул. Жилуновича, 11')">
         <div class="map-overlay">
           <div>
-            <h3>Urban Hall</h3>
-            <p>Партизанский проспект, 6</p>
+            <h3>Бизнес-кафе "Ребус"</h3>
+            <p>ул. Жилуновича, 11</p>
           </div>
         </div>
       </div>
@@ -335,7 +345,7 @@
     // Проверка пароля
     function checkPassword() {
       const password = document.getElementById('passwordInput').value;
-      if (password === "L&R2025") {
+      if (password === "R&L2025") {
         document.getElementById('passwordPopup').style.display = 'none';
         document.getElementById('content').classList.remove('hidden');
         document.body.classList.add('loaded');
@@ -360,7 +370,7 @@
       elements.forEach(el => observer.observe(el));
     }
     
-    // Таймер обратного отсчета (исправлено время на 12:00)
+    // Таймер обратного отсчета
     function startCountdown() {
       const weddingDate = new Date('July 26, 2025 12:00:00').getTime();
       
@@ -379,6 +389,12 @@
       
       updateCountdown();
       setInterval(updateCountdown, 60000);
+    }
+
+    // Открытие Яндекс.Карт
+    function openYandexMaps(address) {
+      const encodedAddress = encodeURIComponent(address);
+      window.open(`https://yandex.ru/maps/?text=${encodedAddress}`, '_blank');
     }
     
     // Автофокус на поле пароля
