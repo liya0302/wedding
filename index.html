@@ -15,9 +15,9 @@
       overflow-x: hidden;
       background-color: #fffaf5;
       position: relative;
-      font-weight: 500; /* Увеличена жирность */
+      font-weight: 500;
       line-height: 1.6;
-      font-size: 1.1em; /* Увеличен базовый размер */
+      font-size: 1.1em;
     }
     
     /* Фоновое изображение */
@@ -67,7 +67,7 @@
       z-index: 1;
     }
     
-    /* Заголовок в каллиграфичном стиле */
+    /* Заголовок */
     h1 {
       font-family: 'Great Vibes', cursive;
       font-size: 5.5em;
@@ -81,12 +81,12 @@
       letter-spacing: 2px;
     }
     
-    /* Дата - улучшенная читаемость */
+    /* Дата */
     .date {
-      font-size: 2.2em; /* Увеличен размер */
-      color: #b8860b; /* Новый контрастный цвет */
+      font-size: 2.2em;
+      color: #b8860b;
       margin-bottom: 40px;
-      font-weight: 600; /* Увеличена жирность */
+      font-weight: 600;
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
       font-family: 'Cormorant Garamond', serif;
       background: rgba(255, 255, 255, 0.7);
@@ -118,17 +118,17 @@
     }
     
     .program h2 {
-      font-size: 1.8em; /* Увеличен размер */
+      font-size: 1.8em;
       margin-bottom: 20px;
       font-weight: 600;
     }
     
     .program p {
-      font-size: 1.2em; /* Увеличен размер */
-      margin: 18px 0; /* Увеличен отступ */
+      font-size: 1.2em;
+      margin: 18px 0;
       position: relative;
       padding-left: 15px;
-      font-weight: 500;
+      font-weight: 600; /* Увеличена жирность */
     }
     
     .program p::before {
@@ -150,7 +150,7 @@
     
     .map {
       width: 48%;
-      height: 270px; /* Увеличена высота */
+      height: 290px; /* Увеличена высота */
       background: #f9f9f9;
       border-radius: 10px;
       overflow: hidden;
@@ -182,12 +182,12 @@
     }
     
     .map-overlay h3 {
-      font-size: 1.5em; /* Увеличен размер */
+      font-size: 1.5em;
       margin-bottom: 10px;
     }
     
     .map-overlay p {
-      font-size: 1.3em; /* Увеличен размер */
+      font-size: 1.3em;
       margin: 8px 0;
       text-align: center;
     }
@@ -212,7 +212,7 @@
       padding: 20px 15px;
       border-radius: 10px;
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      min-width: 90px; /* Увеличен размер */
+      min-width: 90px;
       font-family: 'Cormorant Garamond', serif;
       display: flex;
       flex-direction: column;
@@ -221,15 +221,56 @@
     }
     
     .countdown-number {
-      font-size: 2.5em; /* Увеличен размер */
+      font-size: 2.5em;
       color: #d4af37;
       font-weight: 600;
       margin-bottom: 5px;
     }
     
     .countdown-item div:last-child {
-      font-size: 1.2em; /* Увеличен размер */
+      font-size: 1.2em;
       font-weight: 500;
+    }
+    
+    /* Дресс-код */
+    .dress-code {
+      font-weight: 600; /* Увеличена жирность */
+      font-size: 1.2em; /* Увеличен размер */
+    }
+    
+    /* Адаптация для мобильных */
+    @media (max-width: 768px) {
+      .map {
+        width: 100%;
+        height: 250px; /* Оптимальная высота для мобильных */
+        margin-bottom: 25px;
+      }
+      
+      .map-overlay {
+        padding: 15px;
+      }
+      
+      .map-overlay .hint {
+        margin-top: 10px;
+        font-size: 1em;
+      }
+      
+      h1 {
+        font-size: 4em;
+      }
+      
+      .date {
+        font-size: 1.8em;
+      }
+      
+      .countdown-item {
+        min-width: 80px;
+        padding: 15px 10px;
+      }
+      
+      .countdown-number {
+        font-size: 2em;
+      }
     }
     
     /* Защита паролем */
@@ -290,7 +331,7 @@
     
     .invitation-text {
       margin: 30px 0;
-      font-size: 1.3em; /* Увеличен размер */
+      font-size: 1.3em;
       font-weight: 500;
     }
     
@@ -356,15 +397,15 @@
     <!-- Программа -->
     <div class="program fade-in">
       <h2>Программа</h2>
-      <p>11:30 Торжественная церемония в ЗАГС</p>
-      <p>13:00 Начало мероприятия в кафе "Ребус"</p>
-      <p>14:00 Приезд молодожёнов</p>
-      <p>14:15 Банкет</p>
-      <p>21:00 Окончание</p>
+      <p>11:30 – Торжественная церемония в загс</p>
+      <p>13:00 – Начало мероприятия в кафе "Ребус"</p>
+      <p>14:00 – Приезд молодожёнов</p>
+      <p>14:15 – Банкет</p>
+      <p>21:00 – Окончание</p>
     </div>
     
     <!-- Дресс-код -->
-    <div class="fade-in">
+    <div class="fade-in dress-code">
       <p><em>Дресс-код: вечерние наряды, базовые цвета в одежде</em></p>
     </div>
     
